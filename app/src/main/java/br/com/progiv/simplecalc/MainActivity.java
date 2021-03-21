@@ -59,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10);
                     count++;
 
-                    exibirResultado(); //Troca o resultado na tela
-                    Total = 0;          //Zera o valor de total para não dar erro
+                        //Zera o valor de total para não dar erro
                 }
+                Total = 0;
+                exibirResultado(); //Troca o resultado na tela
+
             }
         });
 
@@ -72,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 1;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tel
-                Total = 0;          //Zera o valor de total para não dar erro
+                Total = 0;
+                exibirResultado(); //Troca o resultado na tela
             }
         });
 
@@ -84,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 2;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
-                Total = 0;          //Zera o valor de total para não dar erro}});
+                Total = 0;
+                exibirResultado(); //Troca o resultado na tela
             }
         });
 
@@ -97,9 +99,10 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 3;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
-            }
+                exibirResultado();    //Troca o resultado na tela
+                }
         });
 
 
@@ -110,8 +113,9 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 4;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
@@ -123,8 +127,9 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 5;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
@@ -136,8 +141,9 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 6;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
@@ -149,8 +155,9 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 7;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
@@ -162,8 +169,9 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 8;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
@@ -175,15 +183,18 @@ public class MainActivity extends AppCompatActivity {
                     Result[i] = (Result[i] * 10) + 9;
                     count++;
                 }
-                exibirResultado();    //Troca o resultado na tela
+
                 Total = 0;          //Zera o valor de total para não dar erro}});
+                exibirResultado();    //Troca o resultado na tela
             }
         });
 
-        //botoes de ação:
+        // botões de ação
         btnSoma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (i == 1) calcular();
+
                 operacao = "soma";
                 proximoNumero();
             }
@@ -192,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (i == 1) calcular();
+
                 operacao = "sub";
                 proximoNumero();
             }
@@ -200,6 +213,8 @@ public class MainActivity extends AppCompatActivity {
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (i == 1) calcular();
+
                 operacao = "mult";
                 proximoNumero();
             }
@@ -208,6 +223,8 @@ public class MainActivity extends AppCompatActivity {
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (i == 1) calcular();
+
                 operacao = "div";
                 proximoNumero();
             }
@@ -217,9 +234,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calcular();
-                exibirResultado();
-                Total = 0;
-                count = 0;
+                Total = 0; //Zera o valor de total para não dar erro
+                count=0;
             }
         });
 
@@ -267,25 +283,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calcular(){
-        //double valor;
-        switch (operacao){
-            case "soma":
-                Total = (Result[0] + Result[1]);
-                break;
-            case "sub":
-                Total = (Result[0] - Result[1]);
-                break;
-            case "mult":
-                Total = (Result[0] * Result[1]);
-                break;
-            case "div":
-                Total = (Result[0] / Result[1]);
-                break;
-        }
-        if(Total < INVALID){
-            Result[0] = Total;
-            Result[1] = 0;
-            i = 1;
+        if(i == 1){
+            double value;
+            switch (operacao){
+                //Executa as operações e sai do switch
+                case "soma":
+                    Total = (Result[0] + Result[1]);
+                    break;
+                case "sub":
+                    Total = Result[0] - Result[1];
+                    break;
+                case "div":
+                    Total = Result[1] == 0 ? Result[0] : Result[0] / Result[1];
+                    break;
+                case "mult":
+                    Total = Result[0] * Result[1];
+                    break;
+            }
+            //Se for um valor inválido
+            if (Total<INVALID) {
+                Result[0] = Total; //Para executar mais operações
+                Result[1] = 0; //Passa para o segundo valor
+                i = 1;
+            }
+
+            exibirResultado(); //Troca o resultado na tela
         }
     }
 
